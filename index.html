@@ -330,7 +330,7 @@ function card(item){
   c.append(
     el("span",{class:"tag","aria-label":"Código",text:item.code||"—"}),
     el("h3",{text:item.title}),
-    item.detalhe ? renderStatus(item.detalhe) : null,
+    ...(item.detalhe ? [renderStatus(item.detalhe)] : []),
     el("div",{class:"pills"}, el("label",{class:"pill owner"}, "Dono: ",
       el("select",{"aria-label":"Dono do problema "+(item.code||""),onchange:e=>changeOwner(item, e.target)},
         OWNERS.includes(item.owner) ? null : el("option",{value:"",text:item.owner||"Escolha",disabled:true,selected:true}),
@@ -385,7 +385,7 @@ function friendly(e){
 
 async function save(item, report, form){
   const fd = new FormData(form);
-  const data = {code:fd.get("code").trim(), title:fd.get("title").trim(), detalhe:fd.get("detalhe").replace(//g,"").trim(), owner:fd.get("owner").trim(), stage:fd.get("stage"), status:fd.get("status").replace(/\r/g,"").trim()};
+  const data = {code:fd.get("code").trim(), title:fd.get("title").trim(), detalhe:fd.get("detalhe").replace(/\r/g,"").trim(), owner:fd.get("owner").trim(), stage:fd.get("stage"), status:fd.get("status").replace(/\r/g,"").trim()};
   if (!data.title || !data.owner) { toast("Preencha o problema e o dono."); return; }
   if (item && ["code","title","detalhe","owner","stage","status"].every(k => (item[k]||"") === data[k])) { ui.editing=null; render(); return; }
   const btn = form.querySelector("[type=submit]"); btn.disabled = true;
