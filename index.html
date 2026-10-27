@@ -270,8 +270,10 @@ function editForm(item, report){
   f.append(
     el("label",{for:"code-"+fid,text:"Código"}), el("input",{id:"code-"+fid,name:"code",value:item?.code||"",placeholder:"Ex.: P9",maxlength:"12"}),
     el("label",{for:"title-"+fid,text:"Problema"}), el("textarea",{id:"title-"+fid,name:"title",required:true,maxlength:"600",style:"min-height:64px"}),
-    el("label",{for:"owner-"+fid,text:"Dono"}), el("input",{id:"owner-"+fid,name:"owner",list:"owners-"+fid,value:item?.owner||"",required:true,maxlength:"60"}),
-    el("datalist",{id:"owners-"+fid}, OWNERS.map(o=>el("option",{value:o}))),
+    el("label",{for:"owner-"+fid,text:"Dono"}),
+    el("select",{id:"owner-"+fid,name:"owner",required:true},
+      el("option",{value:"",text:"Escolha o dono",disabled:true,selected:!OWNERS.includes(item?.owner)}),
+      OWNERS.map(o=>el("option",{value:o,selected:item?.owner===o,text:o}))),
     el("label",{for:"stage-"+fid,text:"Situação"}),
     el("select",{id:"stage-"+fid,name:"stage"}, Object.entries(STAGES).map(([k,v])=>el("option",{value:k,selected:(item?.stage||"aguardando")===k,text:v.label}))),
     el("label",{for:"status-"+fid,text:"Status"}), el("textarea",{id:"status-"+fid,name:"status",maxlength:"6000"}),
