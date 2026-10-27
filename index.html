@@ -83,7 +83,9 @@ section.report{display:flex;flex-direction:column;gap:14px}
 .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 .pill{border-radius:9999px;padding:3px 11px;font-size:12px;font-weight:700}
 .pill.owner{background:var(--gold-soft);color:var(--ink)}
-.pill.owner::before{content:"Dono: ";font-weight:600;color:var(--muted)}
+.pill.owner{font-weight:600;color:var(--muted);display:inline-flex;align-items:center;gap:2px}
+.pill.owner select{font:inherit;font-weight:700;color:var(--ink);background:transparent;border:0;padding:0 2px;cursor:pointer;border-radius:6px}
+.pill.owner select:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .st-aguardando{background:var(--st-wait-bg);color:var(--st-wait)}
 .st-andamento{background:var(--st-prog-bg);color:var(--st-prog)}
 .st-resolvido{background:var(--st-done-bg);color:var(--st-done)}
@@ -320,7 +322,10 @@ function card(item){
   c.append(
     el("span",{class:"tag","aria-label":"Código",text:item.code||"—"}),
     el("h3",{text:item.title}),
-    el("div",{class:"pills"}, el("span",{class:"pill owner",text:item.owner||"Sem dono"}), el("span",{class:"pill st-"+item.stage,text:STAGES[item.stage]?.label||"Aguardando retorno"})),
+    el("div",{class:"pills"}, el("label",{class:"pill owner"}, "Dono: ",
+      el("select",{"aria-label":"Dono do problema "+(item.code||""),onchange:e=>changeOwner(item, e.target)},
+        OWNERS.includes(item.owner) ? null : el("option",{value:"",text:item.owner||"Escolha",disabled:true,selected:true}),
+        OWNERS.map(o=>el("option",{value:o,selected:item.owner===o,text:o})))), el("span",{class:"pill st-"+item.stage,text:STAGES[item.stage]?.label||"Aguardando retorno"})),
     renderStatus(item.status)
   );
   const hc = (history[item.id]||[]).length;
@@ -386,6 +391,18 @@ async function save(item, report, form){
     btn.disabled = false; toast(friendly(e));
     if (String(e.message).startsWith("conflito")) await load();
   }
+}
+
+async function changeOwner(item, sel){
+  if (!sel.value || sel.value === item.owner) return;
+  sel.disabled = true;
+  try {
+    await api("/rpc/salvar_problema", {method:"POST", body:JSON.stringify({
+      p_id:item.id, p_report:item.report, p_code:item.code, p_title:item.title, p_owner:sel.value,
+      p_stage:item.stage, p_status:item.status, p_por:null, p_versao:item.updated_at })});
+    toast("Dono alterado para " + sel.value);
+  } catch (e) { toast(friendly(e)); }
+  await load();
 }
 
 async function remove(item, form){
