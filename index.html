@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Acompanhamento GA4 e YouTube · RED HOUSE</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400..800;1,400..800&display=swap">
+<style>
+/* Layout: cabeçalho de marca, resumo por situação, filtros e duas listas (GA4, YouTube) de cartões editáveis com selo-tag vermelho. */
+:root{
+  --bg:#FAF5F2; --surface:#FFFFFF; --ink:#25282A; --muted:#6B6460; --line:#E8E1DC;
+  --red:#C21233; --gold:#B2945F; --gold-soft:#F3ECDF;
+  --st-wait:#B35A1F; --st-wait-bg:#FDEBDD;
+  --st-prog:#8A6A12; --st-prog-bg:#FFF5C2;
+  --st-done:#2B802B; --st-done-bg:#E2F1DB;
+  --st-na:#5F5A57; --st-na-bg:#ECE8E5;
+  --focus:#C21233;
+  --f-display:"Open Sans","Segoe UI",system-ui,sans-serif;
+  --f-body:"Open Sans","Segoe UI",system-ui,sans-serif;
+  --logo-light:block; --logo-dark:none;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#1C1E20; --surface:#25282A; --ink:#F2EDEA; --muted:#B4ACA7; --line:#3A3D40;
+  --red:#F0546F; --gold:#D3B887; --gold-soft:#36302A;
+  --st-wait:#FFB08C; --st-wait-bg:#3D2A20; --st-prog:#FFE36B; --st-prog-bg:#38331C;
+  --st-done:#9AD47A; --st-done-bg:#223421; --st-na:#C9C2BD; --st-na-bg:#34373A;
+  --focus:#F0546F; --logo-light:none; --logo-dark:block; color-scheme:dark;
+}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+img{max-width:100%}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+header.top{display:flex;flex-direction:column;gap:14px}
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo img{height:52px;width:auto}
+.logo .l-light{display:var(--logo-light)} .logo .l-dark{display:var(--logo-dark)}
+.who{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:12px;font-weight:700;color:var(--gold)}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,4.4vw,2.6rem);line-height:1.1;margin:0;color:var(--red);text-wrap:balance}
+.lede{margin:0;max-width:62ch}
+.meta{font-size:13px;color:var(--muted)}
+
+.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:2px;text-align:left;cursor:pointer;transition:border-color .15s}
+.stat:hover{border-color:var(--muted)}
+.stat[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.stat b{font-size:28px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat span{font-size:13px;color:var(--muted)}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+
+.bars{display:flex;flex-direction:column;gap:8px}
+.barrow{display:grid;grid-template-columns:80px minmax(0,1fr) 64px;align-items:center;gap:10px;font-size:13px}
+.bar{display:flex;height:10px;border-radius:9999px;overflow:hidden;background:var(--line)}
+.bar i{display:block;height:100%}
+.barrow .n{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters .lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:4px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:9999px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+section.report{display:flex;flex-direction:column;gap:14px}
+.rhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--red);padding-bottom:8px}
+.rhead h2{margin:0;font-weight:800;font-size:1.5rem}
+.rhead h2 em{font-style:normal;color:var(--red)}
+.rhead .count{font-size:13px;color:var(--muted)}
+.list{display:flex;flex-direction:column;gap:12px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px}
+.tag{grid-row:1 / span 3;align-self:start;background:var(--red);color:#fff;font-weight:800;font-size:15px;min-width:58px;height:40px;padding:0 12px 0 20px;display:flex;align-items:center;justify-content:center;
+  clip-path:polygon(22% 0,100% 0,100% 100%,22% 100%,0 50%);font-variant-numeric:tabular-nums}
+.card h3{margin:0;font-size:17px;font-weight:700;line-height:1.35;text-wrap:balance}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.pill{border-radius:9999px;padding:3px 11px;font-size:12px;font-weight:700}
+.pill.owner{background:var(--gold-soft);color:var(--ink)}
+.pill.owner::before{content:"Dono: ";font-weight:600;color:var(--muted)}
+.st-aguardando{background:var(--st-wait-bg);color:var(--st-wait)}
+.st-andamento{background:var(--st-prog-bg);color:var(--st-prog)}
+.st-resolvido{background:var(--st-done-bg);color:var(--st-done)}
+.st-naoaplica{background:var(--st-na-bg);color:var(--st-na)}
+.status{grid-column:2;margin-top:10px;display:flex;flex-direction:column;gap:6px;max-width:72ch}
+.status p{margin:0}
+.status .empty{color:var(--muted);font-style:italic}
+.cfoot{grid-column:2;margin-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:12px;color:var(--muted)}
+.cfoot .sp{flex:1}
+.link{background:none;border:0;padding:4px 2px;color:var(--red);font-weight:700;font-size:13px;cursor:pointer}
+.link:hover{text-decoration:underline}
+
+.btn{border-radius:9999px;font-weight:600;font-size:14px;padding:9px 18px;border:1px solid transparent;cursor:pointer}
+.btn.gold{background:var(--gold);color:#fff}
+.btn.ghost{background:transparent;border-color:var(--line)}
+.btn.danger{background:transparent;border-color:var(--red);color:var(--red)}
+.btn.dangerfill{background:var(--red);color:#fff}
+.btn:disabled{opacity:.55;cursor:default}
+.add{align-self:flex-start}
+
+form.edit{grid-column:1 / -1;display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px 14px;align-items:start}
+form.edit label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding-top:9px}
+form.edit input,form.edit select,form.edit textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+form.edit textarea{min-height:120px;resize:vertical;line-height:1.5}
+form.edit .hint{grid-column:2;font-size:12px;color:var(--muted);margin:-6px 0 0}
+form.edit .actions{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+form.edit .actions .sp{flex:1}
+.confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px}
+
+.hist{grid-column:2;margin-top:10px;border-left:2px solid var(--line);padding-left:14px;display:flex;flex-direction:column;gap:10px;font-size:13px}
+.hist .h{display:flex;flex-direction:column;gap:2px}
+.hist .h small{color:var(--muted)}
+.hist del{color:var(--muted)}
+.hist ins{text-decoration:none;font-weight:600}
+
+.notice{background:var(--surface);border:1px dashed var(--line);border-radius:16px;padding:18px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:9999px;font-size:14px;font-weight:600;z-index:20;max-width:calc(100% - 32px);text-align:center}
+
+@media (max-width:640px){
+  .summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card{grid-template-columns:minmax(0,1fr);padding:16px}
+  .tag{grid-row:auto;justify-self:start}
+  .status,.cfoot,.hist{grid-column:1}
+  form.edit{grid-template-columns:minmax(0,1fr)}
+  form.edit label{padding-top:0}
+  form.edit .hint{grid-column:1}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brandrow">
+      <span class="logo">
+        <img class="l-light" alt="RED HOUSE International School" src="data:image/png;base64,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">
+        <img class="l-dark" alt="RED HOUSE International School" src="data:image/png;base64,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">
+      </span>
+      <span class="who" id="who" hidden><span id="whoName"></span><button class="link" type="button" id="whoChange">Trocar nome</button></span>
+    </div>
+    <span class="eyebrow">Marketing e Mídia · acompanhamento</span>
+    <h1>Relatório GA4 e YouTube</h1>
+    <p class="lede">Problemas apontados na auditoria de GA4 e do canal do YouTube, com o time responsável e o andamento de cada um. Qualquer pessoa com este link pode atualizar, e toda alteração fica registrada no histórico do item com nome, data e o que mudou.</p>
+    <span class="meta" id="lastUpdate">Carregando dados…</span>
+  </header>
+
+  <div class="summary" id="summary" role="group" aria-label="Filtrar por situação"></div>
+  <div class="bars" id="bars"></div>
+
+  <div class="filters" role="group" aria-label="Filtrar por dono">
+    <span class="lbl">Dono</span>
+    <button class="chip" type="button" data-owner="" aria-pressed="true">Todos</button>
+    <button class="chip" type="button" data-owner="Mídia" aria-pressed="false">Mídia</button>
+    <button class="chip" type="button" data-owner="Marketing" aria-pressed="false">Marketing</button>
+  </div>
+
+  <section class="report" id="sec-ga4">
+    <div class="rhead"><h2>Relatório <em>GA4</em></h2><span class="count" id="count-ga4"></span></div>
+    <div class="list" id="list-ga4"><div class="notice">Carregando os problemas do GA4…</div></div>
+    <button class="btn ghost add" type="button" data-add="ga4" hidden>Adicionar problema ao GA4</button>
+  </section>
+
+  <section class="report" id="sec-youtube">
+    <div class="rhead"><h2>Relatório <em>YouTube</em></h2><span class="count" id="count-youtube"></span></div>
+    <div class="list" id="list-youtube"><div class="notice">Carregando os problemas do YouTube…</div></div>
+    <button class="btn ghost add" type="button" data-add="youtube" hidden>Adicionar problema ao YouTube</button>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+// Chave pública (anon): só lê as tabelas e chama as funções salvar_problema / remover_problema.
+// Escrita direta nas tabelas é bloqueada no banco; o histórico só aceita inclusões.
+const API = "https://vuanlcvmnbarhtlnbvzg.supabase.co/rest/v1";
+const KEY = "sb_publishable__FecFx2o8eCjTj4f-seWgg_iCB_PP2w";
+
+const STAGES = {
+  aguardando: {label:"Aguardando retorno", color:"var(--st-wait)"},
+  andamento:  {label:"Em andamento",       color:"var(--st-prog)"},
+  resolvido:  {label:"Resolvido",          color:"var(--st-done)"},
+  naoaplica:  {label:"Não se aplica",      color:"var(--st-na)"}
+};
+const OWNERS = ["Mídia","Marketing"];
+const REPORTS = {ga4:"GA4", youtube:"YouTube"};
+const LABEL_RE = /^(Causa|O que não é|Impacto|Próximo passo|Próximos passos|Responsável|Prazo|Observação):\s*/;
+
+let items = [], history = {}, loaded = false;
+const ui = {owner:"", stage:"", editing:null, adding:null, histOpen:new Set(), confirmDel:null};
+
+const $ = s => document.querySelector(s);
+const el = (tag, attrs={}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v; else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else if (k === "text") n.textContent = v; else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of kids.flat()) if (c != null) n.append(c);
+  return n;
+};
+const fmt = iso => { try { return new Date(iso).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"}); } catch { return ""; } };
+const store = { get(k){ try { return localStorage.getItem(k) || ""; } catch { return ""; } }, set(k,v){ try { localStorage.setItem(k,v); } catch {} } };
+let myName = store.get("rh-acomp-nome");
+
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true,3200); }
+function showName(){ $("#who").hidden = !myName; $("#whoName").textContent = myName ? `Editando como ${myName}` : ""; }
+
+async function api(path, opts={}){
+  const r = await fetch(API + path, {...opts, headers:{apikey:KEY, Authorization:"Bearer "+KEY, "Content-Type":"application/json", ...(opts.headers||{})}});
+  const body = r.status === 204 ? null : await r.json().catch(()=>null);
+  if (!r.ok) throw new Error((body && body.message) || ("Erro " + r.status));
+  return body;
+}
+
+async function load(){
+  try {
+    const [p, h] = await Promise.all([
+      api("/problemas?select=*&deleted=eq.false&order=report,ord"),
+      api("/historico?select=*&order=at.desc&limit=1000")
+    ]);
+    items = p; history = {};
+    for (const x of h) (history[x.problem_id] ||= []).push(x);
+    loaded = true; render();
+  } catch (e) {
+    if (!loaded) {
+      $("#lastUpdate").textContent = "Não foi possível carregar os dados. Verifique a conexão e recarregue a página.";
+      for (const rk of Object.keys(REPORTS)) $("#list-"+rk).replaceChildren(el("div",{class:"notice",text:"Os problemas aparecem aqui quando a conexão voltar."}));
+    }
+  }
+}
+
+function renderStatus(text){
+  const box = el("div",{class:"status"});
+  const t = (text||"").trim();
+  if (!t) { box.append(el("p",{class:"empty",text:"Sem atualização de status."})); return box; }
+  for (const line of t.split(/\n+/)) {
+    const m = line.match(LABEL_RE);
+    if (m) box.append(el("p",{}, el("b",{text:m[0].trim()+" "}), line.slice(m[0].length)));
+    else box.append(el("p",{text:line}));
+  }
+  return box;
+}
+
+function renderSummary(){
+  const visible = items.filter(i => !ui.owner || i.owner === ui.owner);
+  const s = $("#summary"); s.replaceChildren();
+  for (const [k,v] of Object.entries(STAGES)) {
+    const n = visible.filter(i => i.stage === k).length;
+    s.append(el("button",{class:"stat",type:"button","aria-pressed":String(ui.stage===k),onclick:()=>{ui.stage = ui.stage===k?"":k; render();}},
+      el("b",{text:String(n)}), el("span",{}, el("i",{class:"dot",style:`background:${v.color}`}), v.label)));
+  }
+  const b = $("#bars"); b.replaceChildren();
+  for (const [rk,rl] of Object.entries(REPORTS)) {
+    const list = visible.filter(i => i.report === rk);
+    const bar = el("div",{class:"bar",role:"img","aria-label":`${rl}: `+Object.entries(STAGES).map(([k,v])=>`${list.filter(i=>i.stage===k).length} ${v.label.toLowerCase()}`).join(", ")});
+    for (const [k,v] of Object.entries(STAGES)) {
+      const n = list.filter(i => i.stage === k).length;
+      if (n) bar.append(el("i",{style:`width:${100*n/list.length}%;background:${v.color}`}));
+    }
+    b.append(el("div",{class:"barrow"}, el("strong",{text:rl}), bar, el("span",{class:"n",text:`${list.length} itens`})));
+  }
+}
+
+function editForm(item, report){
+  const isNew = !item;
+  const fid = isNew ? "novo-"+report : item.id;
+  const f = el("form",{class:"edit",onsubmit:e=>{e.preventDefault(); save(item, report, f);}});
+  f.append(
+    el("label",{for:"by-"+fid,text:"Seu nome"}), el("input",{id:"by-"+fid,name:"by",value:myName,required:true,minlength:"2",maxlength:"80",autocomplete:"name",placeholder:"Para registrar no histórico"}),
+    el("label",{for:"code-"+fid,text:"Código"}), el("input",{id:"code-"+fid,name:"code",value:item?.code||"",placeholder:"Ex.: P9",maxlength:"12"}),
+    el("label",{for:"title-"+fid,text:"Problema"}), el("textarea",{id:"title-"+fid,name:"title",required:true,maxlength:"600",style:"min-height:64px"}),
+    el("label",{for:"owner-"+fid,text:"Dono"}), el("input",{id:"owner-"+fid,name:"owner",list:"owners-"+fid,value:item?.owner||"",required:true,maxlength:"60"}),
+    el("datalist",{id:"owners-"+fid}, OWNERS.map(o=>el("option",{value:o}))),
+    el("label",{for:"stage-"+fid,text:"Situação"}),
+    el("select",{id:"stage-"+fid,name:"stage"}, Object.entries(STAGES).map(([k,v])=>el("option",{value:k,selected:(item?.stage||"aguardando")===k,text:v.label}))),
+    el("label",{for:"status-"+fid,text:"Status"}), el("textarea",{id:"status-"+fid,name:"status",maxlength:"6000"}),
+    el("p",{class:"hint",text:"Uma ideia por linha. Linhas que começam com “Causa:”, “Impacto:” ou “Próximo passo:” ganham destaque."})
+  );
+  f.querySelector("[name=title]").value = item?.title || "";
+  f.querySelector("[name=status]").value = item?.status || "";
+  const actions = el("div",{class:"actions"},
+    el("button",{class:"btn gold",type:"submit",text:isNew?"Adicionar problema":"Salvar alterações"}),
+    el("button",{class:"btn ghost",type:"button",text:"Cancelar",onclick:()=>{ui.editing=null; ui.adding=null; ui.confirmDel=null; render();}}),
+    el("span",{class:"sp"})
+  );
+  if (!isNew) {
+    if (ui.confirmDel === item.id) {
+      actions.append(el("span",{class:"confirm"}, "Remover este problema do relatório? Ele continua no histórico.",
+        el("button",{class:"btn dangerfill",type:"button",text:"Remover",onclick:()=>remove(item, f)}),
+        el("button",{class:"btn ghost",type:"button",text:"Manter",onclick:()=>{ui.confirmDel=null; render();}})));
+    } else actions.append(el("button",{class:"btn danger",type:"button",text:"Remover",onclick:()=>{ui.confirmDel=item.id; render();}}));
+  }
+  f.append(actions);
+  return f;
+}
+
+function renderHistory(item){
+  const list = history[item.id] || [];
+  const box = el("div",{class:"hist"});
+  if (!list.length) { box.append(el("div",{class:"h"}, el("small",{text:"Nenhuma alteração registrada ainda. O conteúdo atual veio do relatório original."}))); return box; }
+  const FIELDS = {code:"Código",title:"Problema",owner:"Dono",stage:"Situação",status:"Status"};
+  const show = (k,v) => k==="stage" ? (STAGES[v]?.label||v||"—") : (v||"—");
+  for (const h of list) {
+    const row = el("div",{class:"h"}, el("small",{text:`${fmt(h.at)} · ${h.by_name} · ${h.action==="create"?"criou":h.action==="delete"?"removeu":"alterou"}`}));
+    if (h.action === "update") for (const k of Object.keys(FIELDS)) {
+      if ((h.before||{})[k] === (h.after||{})[k]) continue;
+      row.append(el("div",{}, el("b",{text:FIELDS[k]+": "}), el("del",{text:show(k,h.before?.[k])}), " → ", el("ins",{text:show(k,h.after?.[k])})));
+    }
+    box.append(row);
+  }
+  return box;
+}
+
+function card(item){
+  const c = el("article",{class:"card",id:"item-"+item.id});
+  if (ui.editing === item.id) { c.append(el("span",{class:"tag",text:item.code||"—"}), editForm(item, item.report)); return c; }
+  c.append(
+    el("span",{class:"tag","aria-label":"Código",text:item.code||"—"}),
+    el("h3",{text:item.title}),
+    el("div",{class:"pills"}, el("span",{class:"pill owner",text:item.owner||"Sem dono"}), el("span",{class:"pill st-"+item.stage,text:STAGES[item.stage]?.label||"Aguardando retorno"})),
+    renderStatus(item.status)
+  );
+  const hc = (history[item.id]||[]).length;
+  c.append(el("div",{class:"cfoot"},
+    el("span",{text:item.updated_at ? `Atualizado por ${item.updated_by} em ${fmt(item.updated_at)}` : "Conteúdo do relatório original"}),
+    el("span",{class:"sp"}),
+    el("button",{class:"link",type:"button","aria-expanded":String(ui.histOpen.has(item.id)),text:ui.histOpen.has(item.id)?"Ocultar histórico":`Histórico (${hc})`,onclick:()=>{ui.histOpen.has(item.id)?ui.histOpen.delete(item.id):ui.histOpen.add(item.id); render();}}),
+    el("button",{class:"link",type:"button",text:"Editar",onclick:()=>{ui.editing=item.id; ui.adding=null; ui.confirmDel=null; render(); document.getElementById((myName?"title-":"by-")+item.id)?.focus();}})
+  ));
+  if (ui.histOpen.has(item.id)) c.append(renderHistory(item));
+  return c;
+}
+
+function render(){
+  // Preserva o que está sendo digitado quando a lista é atualizada
+  const draft = {}; document.querySelectorAll("form.edit [id]").forEach(f => draft[f.id] = f.value);
+  const act = document.activeElement, actId = act?.closest?.("form.edit") ? act.id : null;
+  const sel = actId && "selectionStart" in act ? [act.selectionStart, act.selectionEnd] : null;
+  draw();
+  for (const [id,v] of Object.entries(draft)) { const f = document.getElementById(id); if (f) f.value = v; }
+  if (actId) { const f = document.getElementById(actId); if (f) { f.focus(); if (sel) try { f.setSelectionRange(...sel); } catch {} } }
+}
+
+function draw(){
+  showName();
+  document.querySelectorAll(".filters .chip").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.owner===ui.owner)));
+  renderSummary();
+  for (const rk of Object.keys(REPORTS)) {
+    const all = items.filter(i => i.report === rk).sort((a,b)=>a.ord-b.ord);
+    const shown = all.filter(i => (!ui.owner || i.owner===ui.owner) && (!ui.stage || i.stage===ui.stage));
+    const list = $("#list-"+rk); list.replaceChildren();
+    $("#count-"+rk).textContent = shown.length === all.length ? `${all.length} problemas` : `${shown.length} de ${all.length} problemas`;
+    if (!all.length) list.append(el("div",{class:"notice",text:"Nenhum problema cadastrado. Use “Adicionar problema” para incluir o primeiro."}));
+    else if (!shown.length) list.append(el("div",{class:"notice",text:"Nenhum problema com esse filtro."}));
+    for (const i of shown) list.append(card(i));
+    if (ui.adding === rk) list.append(el("article",{class:"card"}, el("span",{class:"tag",text:"Novo"}), editForm(null, rk)));
+    document.querySelector(`[data-add="${rk}"]`).hidden = ui.adding === rk;
+  }
+  const latest = items.filter(i=>i.updated_at).sort((a,b)=>b.updated_at.localeCompare(a.updated_at))[0];
+  $("#lastUpdate").textContent = latest ? `Última atualização: ${fmt(latest.updated_at)}, por ${latest.updated_by}` : "Conteúdo do relatório original de 27/10/2026. Nenhuma atualização dos times ainda.";
+}
+
+function friendly(e){
+  const m = String(e && e.message || "");
+  if (m.startsWith("conflito")) return "Alguém salvou este item enquanto você editava. Recarregamos a versão atual: confira e salve de novo.";
+  if (m.includes("nome")) return m;
+  if (m.includes("violates check")) return "Algum campo passou do tamanho permitido. Encurte o texto e tente de novo.";
+  return "Não foi possível salvar. Verifique a conexão e tente de novo.";
+}
+
+async function save(item, report, form){
+  const fd = new FormData(form);
+  const by = fd.get("by").trim();
+  const data = {code:fd.get("code").trim(), title:fd.get("title").trim(), owner:fd.get("owner").trim(), stage:fd.get("stage"), status:fd.get("status").replace(/\r/g,"").trim()};
+  if (by.length < 2) { toast("Escreva seu nome para registrar no histórico."); form.querySelector("[name=by]").focus(); return; }
+  if (!data.title || !data.owner) { toast("Preencha o problema e o dono."); return; }
+  myName = by; store.set("rh-acomp-nome", by);
+  if (item && ["code","title","owner","stage","status"].every(k => (item[k]||"") === data[k])) { ui.editing=null; render(); return; }
+  const btn = form.querySelector("[type=submit]"); btn.disabled = true;
+  try {
+    await api("/rpc/salvar_problema", {method:"POST", body:JSON.stringify({
+      p_id:item?item.id:null, p_report:report, p_code:data.code, p_title:data.title, p_owner:data.owner,
+      p_stage:data.stage, p_status:data.status, p_por:by, p_versao:item?item.updated_at:null })});
+    ui.editing = null; ui.adding = null;
+    toast(item ? "Alterações salvas" : "Problema adicionado");
+    await load();
+  } catch (e) {
+    btn.disabled = false; toast(friendly(e));
+    if (String(e.message).startsWith("conflito")) await load();
+  }
+}
+
+async function remove(item, form){
+  const by = (form.querySelector("[name=by]").value || "").trim();
+  if (by.length < 2) { toast("Escreva seu nome para registrar no histórico."); form.querySelector("[name=by]").focus(); return; }
+  myName = by; store.set("rh-acomp-nome", by);
+  try {
+    await api("/rpc/remover_problema", {method:"POST", body:JSON.stringify({p_id:item.id, p_por:by, p_versao:item.updated_at})});
+    ui.editing=null; ui.confirmDel=null; toast("Problema removido"); await load();
+  } catch (e) { toast(friendly(e)); if (String(e.message).startsWith("conflito")) await load(); }
+}
+
+document.querySelectorAll(".filters .chip").forEach(b=>b.addEventListener("click",()=>{ui.owner=b.dataset.owner; render();}));
+document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>{ui.adding=b.dataset.add; ui.editing=null; render(); document.getElementById((myName?"title-novo-":"by-novo-")+b.dataset.add)?.focus();}));
+$("#whoChange").addEventListener("click",()=>{ myName=""; store.set("rh-acomp-nome",""); render(); });
+
+load();
+// Mantém a tela em dia com o que os outros times salvam
+setInterval(()=>{ if (!document.hidden) load(); }, 30000);
+document.addEventListener("visibilitychange",()=>{ if (!document.hidden) load(); });
+</script>
+</body>
+</html>
