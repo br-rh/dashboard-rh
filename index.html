@@ -70,6 +70,13 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,4.4vw,2.6
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 
 section.report{display:flex;flex-direction:column;gap:14px}
+section.report[hidden]{display:none}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto;overflow-y:hidden}
+.tab{border:0;background:transparent;font:inherit;font-weight:700;font-size:15px;color:var(--muted);padding:10px 16px;margin-bottom:-1px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:8px}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--red);border-bottom-color:var(--red)}
+.tab .n{font-size:12px;font-weight:700;background:var(--gold-soft);color:var(--ink);border-radius:9999px;padding:1px 8px}
+.tab:focus-visible{outline:2px solid var(--ink);outline-offset:-2px;border-radius:6px}
 .rhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--red);padding-bottom:8px}
 .rhead h2{margin:0;font-weight:800;font-size:1.5rem}
 .rhead h2 em{font-style:normal;color:var(--red)}
@@ -154,6 +161,8 @@ form.edit .actions .sp{flex:1}
   <div class="summary" id="summary" role="group" aria-label="Filtrar por situação"></div>
   <div class="bars" id="bars"></div>
 
+  <div class="tabs" id="tabs" role="tablist" aria-label="Relatórios"></div>
+
   <div class="filters" role="group" aria-label="Filtrar por dono">
     <span class="lbl">Dono</span>
     <button class="chip" type="button" data-owner="" aria-pressed="true">Todos</button>
@@ -198,7 +207,7 @@ const REPORTS = {ga4:"GA4", youtube:"YouTube", instagram:"Instagram"};
 const LABEL_RE = /^(Causa|O que não é|Impacto|Próximo passo|Próximos passos|Responsável|Prazo|Observação|O que muda na prática|Meta em 90 dias):\s*/;
 
 let items = [], history = {}, loaded = false;
-const ui = {owner:"", stage:"", editing:null, adding:null, histOpen:new Set(), confirmDel:null};
+const ui = {tab:(() => { const h = location.hash.slice(1); return h in REPORTS ? h : "ga4"; })(), owner:"", stage:"", editing:null, adding:null, histOpen:new Set(), confirmDel:null};
 
 const $ = s => document.querySelector(s);
 const el = (tag, attrs={}, ...kids) => {
@@ -361,7 +370,13 @@ function render(){
 function draw(){
   document.querySelectorAll(".filters .chip").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.owner===ui.owner)));
   renderSummary();
+  const tabs = $("#tabs"); tabs.replaceChildren();
+  for (const [rk,rl] of Object.entries(REPORTS)) {
+    const n = items.filter(i => i.report === rk && (!ui.owner || i.owner === ui.owner) && (!ui.stage || i.stage === ui.stage)).length;
+    tabs.append(el("button",{class:"tab",type:"button",role:"tab",id:"tab-"+rk,"data-tab":rk,"aria-selected":String(ui.tab===rk),"aria-controls":"sec-"+rk,tabindex:ui.tab===rk?"0":"-1",onclick:()=>selectTab(rk)}, rl, el("span",{class:"n",text:String(n)})));
+  }
   for (const rk of Object.keys(REPORTS)) {
+    const sec = $("#sec-"+rk); sec.hidden = ui.tab !== rk; sec.setAttribute("role","tabpanel"); sec.setAttribute("aria-labelledby","tab-"+rk);
     const all = items.filter(i => i.report === rk).sort((a,b)=>a.ord-b.ord);
     const shown = all.filter(i => (!ui.owner || i.owner===ui.owner) && (!ui.stage || i.stage===ui.stage));
     const list = $("#list-"+rk); list.replaceChildren();
@@ -421,6 +436,15 @@ async function remove(item, form){
   } catch (e) { toast(friendly(e)); if (String(e.message).startsWith("conflito")) await load(); }
 }
 
+function selectTab(rk, focus){
+  ui.tab = rk; try { history.replaceState(null, "", "#" + rk); } catch {}
+  render(); if (focus) document.getElementById("tab-"+rk)?.focus();
+}
+$("#tabs").addEventListener("keydown", e => {
+  const keys = Object.keys(REPORTS), i = keys.indexOf(ui.tab);
+  if (e.key === "ArrowRight") { e.preventDefault(); selectTab(keys[(i+1)%keys.length], true); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); selectTab(keys[(i+keys.length-1)%keys.length], true); }
+});
 document.querySelectorAll(".filters .chip").forEach(b=>b.addEventListener("click",()=>{ui.owner=b.dataset.owner; render();}));
 document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>{ui.adding=b.dataset.add; ui.editing=null; render(); document.getElementById("title-novo-"+b.dataset.add)?.focus();}));
 
