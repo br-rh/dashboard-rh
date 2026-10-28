@@ -100,6 +100,9 @@ section.report[hidden]{display:none}
 .status{grid-column:2;margin-top:10px;display:flex;flex-direction:column;gap:6px;max-width:72ch}
 .status p{margin:0}
 .status .empty{color:var(--muted);font-style:italic}
+.retorno{grid-column:2;margin-top:12px;background:var(--gold-soft);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:10px 14px;max-width:72ch}
+.retorno .lbl{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.retorno .status{margin-top:0;max-width:none}
 .cfoot{grid-column:2;margin-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:12px;color:var(--muted)}
 .cfoot .sp{flex:1}
 .link{background:none;border:0;padding:4px 2px;color:var(--red);font-weight:700;font-size:13px;cursor:pointer}
@@ -135,7 +138,7 @@ form.edit .actions .sp{flex:1}
   .summary{grid-template-columns:repeat(2,minmax(0,1fr))}
   .card{grid-template-columns:minmax(0,1fr);padding:16px}
   .tag{grid-row:auto;justify-self:start}
-  .status,.cfoot,.hist{grid-column:1}
+  .status,.retorno,.cfoot,.hist{grid-column:1}
   form.edit{grid-template-columns:minmax(0,1fr)}
   form.edit label{padding-top:0}
   form.edit .hint{grid-column:1}
@@ -254,10 +257,14 @@ async function load(){
   }
 }
 
+function renderRetorno(text){
+  return el("div",{class:"retorno"}, el("span",{class:"lbl",text:"Retorno do time"}), renderStatus(text));
+}
+
 function renderStatus(text){
   const box = el("div",{class:"status"});
   const t = (text||"").trim();
-  if (!t) { box.append(el("p",{class:"empty",text:"Sem atualização de status."})); return box; }
+  if (!t) { box.append(el("p",{class:"empty",text:"Ainda sem retorno do time."})); return box; }
   for (const line of t.split(/\n+/)) {
     const m = line.match(LABEL_RE);
     if (m) box.append(el("p",{}, el("b",{text:m[0].trim()+" "}), line.slice(m[0].length)));
@@ -300,7 +307,7 @@ function editForm(item, report){
       OWNERS.map(o=>el("option",{value:o,selected:item?.owner===o,text:o}))),
     el("label",{for:"stage-"+fid,text:"Situação"}),
     el("select",{id:"stage-"+fid,name:"stage"}, Object.entries(STAGES).map(([k,v])=>el("option",{value:k,selected:(item?.stage||"aguardando")===k,text:v.label}))),
-    el("label",{for:"status-"+fid,text:"Status"}), el("textarea",{id:"status-"+fid,name:"status",maxlength:"6000"}),
+    el("label",{for:"status-"+fid,text:"Retorno do time"}), el("textarea",{id:"status-"+fid,name:"status",maxlength:"6000"}),
     el("p",{class:"hint",text:"Uma ideia por linha. Linhas que começam com “Causa:”, “Impacto:” ou “Próximo passo:” ganham destaque."})
   );
   f.querySelector("[name=title]").value = item?.title || "";
@@ -350,7 +357,7 @@ function card(item){
       el("select",{"aria-label":"Dono do problema "+(item.code||""),onchange:e=>changeOwner(item, e.target)},
         OWNERS.includes(item.owner) ? null : el("option",{value:"",text:item.owner||"Escolha",disabled:true,selected:true}),
         OWNERS.map(o=>el("option",{value:o,selected:item.owner===o,text:o})))), el("span",{class:"pill st-"+item.stage,text:STAGES[item.stage]?.label||"Aguardando retorno"})),
-    renderStatus(item.status)
+    renderRetorno(item.status)
   );
   const hc = (history[item.id]||[]).length;
   c.append(el("div",{class:"cfoot"},
